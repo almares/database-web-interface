@@ -1,0 +1,62 @@
+/* #title {
+  background-color: #C8E6C9;
+} */
+
+#searchBar {
+  margin: 15px 10px;
+}
+
+#flowers {
+  margin-bottom: 20px;
+  max-height:600px;
+}
+
+/* .dropdown {
+  margin: 20px;
+} */
+
+#dropdown_coins {
+  border-color: rgb(215,215,215);
+  margin-left: 0px;
+  
+}
+
+.dropdown-menu {
+  max-height: 20rem;
+  overflow-y: auto;
+}
+
+/* #sightings {
+  width: 18rem;
+} */
+
+.card-deck .card {
+    min-width: calc(25% - 30px);
+    max-width: calc(25% - 30px);
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+#form {
+  min-width: calc(50% - 30px);
+  max-width: calc(50% - 30px);
+}
+
+/* #addNew {
+  background-color: #C8E6C9;
+} */
+
+/* #sight-head {
+  padding-left: 15px;
+} */
+
+.tableWrapper {
+  height: 500px;
+  overflow: auto;
+  padding-bottom: 0px;
+}
+
+.jumbotron {
+  background-color: #CFD8DC;
+  /* padding-bottom: 0px; */
+}
