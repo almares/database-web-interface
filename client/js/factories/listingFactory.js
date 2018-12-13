@@ -32,7 +32,7 @@ angular.module('listings', []).factory('Listings', function($http) {
     },
 
     updateFlower: function(flower) {
-      return $http.put('http://localhost:8080/api/flowers/', flower)
+      return $http.put(url+'/api/flowers/', flower)
     }
   };
 
