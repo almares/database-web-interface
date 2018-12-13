@@ -4,7 +4,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     Listings.getFlowers().then(function(response) {
       $scope.listings = response.data;
       $scope.curListing = response.data[0];
-      $scope.getSightings(response.data[0]);
+      $scope.showDetails($scope.curListing);
     }, function(error) {
       console.log('Unable to retrieve listings:', error);
     });
@@ -41,6 +41,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
     $scope.showDetails = function(listing) {
       $scope.curListing = listing;
+      // $scope.getImage(listing);
       $scope.getSightings(listing);
     };
 
@@ -48,6 +49,22 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       Listings.getSightings(listing.COMNAME).then((res) => {
         $scope.sightings = res.data;
       });
+    };
+
+    $scope.getImage = function(listing) {
+      Listings.getImage(listing.COMNAME).then((res) => {
+        $scope.curImage = res.data.items[0].link;
+        console.log(res.data);
+      });
+    };
+
+    $scope.saveChanges = function() {
+      var flower = {};
+      flower.comname = $scope.curListing.COMNAME;
+      flower.genus = $('#genus')[0].value;
+      flower.species = $('#species')[0].value;
+
+      Listings.updateFlower(flower);
     };
 
     $scope.submit = function() {
@@ -62,7 +79,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
       if (found) {
         var sighting = {};
-        sighting.name = $scope.curListing;
+        sighting.name = $scope.curListing.COMNAME;
         sighting.person = $scope.newSighting.name;
         sighting.location = selected;
         sighting.sighted = $scope.newSighting.date.convert();
@@ -82,6 +99,15 @@ Date.prototype.convert = function() {
         (d>9 ? '' : '0') + d
       ].join('-');
 };
+
+function editFlower() {
+  $('#genus').prop('readonly', false);
+  $('#species').prop('readonly', false);
+
+  $('#genus').attr('class', 'form-control');
+  $('#species').attr('class', 'form-control');
+
+}
 
 //Find the input search box
 let search = document.getElementById("searchCoin")

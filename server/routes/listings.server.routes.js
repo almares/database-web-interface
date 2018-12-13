@@ -5,14 +5,15 @@ var listings = require('../controllers/listings.server.controller.js'),
 
 router.route('/flowers')
   .get(listings.listFlowers)
-  .post(listings.create);
+  .post(listings.create)
+  .put(listings.updateFlower);
 
 
 router.route('/locations')
   .get(listings.listLocations)
 
 router.route('/sightings')
-  .put(listings.addSighting)
+  .post(listings.addSighting)
 
 router.route('/flowers/:comname')
   .get(listings.read)

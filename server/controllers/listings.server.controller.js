@@ -27,7 +27,7 @@ exports.read = function(req, res) {
   Database.all(`SELECT * FROM sightings
                WHERE name = "${comname}"
                ORDER BY sighted DESC
-               LIMIT 10`,
+               LIMIT 10;`,
   (err, row) => {
     if(err) {
       res.status(400).send(err);
@@ -50,10 +50,25 @@ exports.update = function(req, res) {
 
   listing.save(function(err) {
     if(err) {
-      console.log(err);
       res.status(400).send(err);
     } else {
       res.json(listing);
+    }
+  });
+};
+
+exports.updateFlower = function(req, res) {
+  var comname = req.body.comname;
+  var genus = req.body.genus;
+  var species = req.body.species;
+
+  Database.run(`UPDATE FLOWERS
+                SET GENUS = "${genus}", SPECIES = "${species}"
+                WHERE COMNAME = "${comname}";`, (err) => {
+    if(err) {
+      res.status(400).send(err);
+    } else {
+      console.log("success");
     }
   });
 };
@@ -69,19 +84,18 @@ exports.delete = function(req, res) {
 };
 
 exports.addSighting = function(req, res) {
-  var name = req.sighting.name;
-  var person = req.sighting.person;
-  var location = req.sighting.location;
-  var sighted = req.sighting.sighted;
+  var name = req.body.name;
+  var person = req.body.person;
+  var location = req.body.location;
+  var sighted = req.body.sighted;
 
-  console.log('test');
-  console.log(req.sighting);
-
-  Database.run(`INSERT INTO sightings
-                VALUES(${name},${person},${location},${sighted})`, (err) => {
+  Database.run(`INSERT INTO SIGHTINGS
+                VALUES("${name}","${person}","${location}","${sighted}");`, (err) => {
     if(err) {
       res.status(400).send(err);
-    };
+    } else {
+      console.log("success");
+    }
   });
 };
 

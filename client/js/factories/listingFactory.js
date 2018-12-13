@@ -25,7 +25,11 @@ angular.module('listings', []).factory('Listings', function($http) {
     },
 
     addSighting: function(sighting) {
-      return $http.put('http://localhost:8080/api/sightings', sighting);
+      return $http.post('http://localhost:8080/api/sightings', sighting);
+    },
+
+    updateFlower: function(flower) {
+      return $http.put('http://localhost:8080/api/flowers/', flower)
     }
   };
 
