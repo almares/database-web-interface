@@ -5,18 +5,15 @@
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body ng-app="directoryApp" ng-controller="ListingsController">
+    <h1 id="title" style="">Southern Sierra Wildflower Club</h1>
+
     <div class="container">
 
-      <div class="row" id="title">
-        <h1>Southern Sierra Wildflower Club</h1>
-      </div>
-
-
-
       <div class="row">
-        <div class="input-group" id="searchBar">
-          <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-          <input type="text" class="form-control" placeholder="Search" ng-model="query">
+        <div class="col-12">
+          <div class="input-group" id="searchBar">
+            <input type="text" class="form-control" placeholder="Search" ng-model="query">
+          </div>
         </div>
       </div>
 
@@ -31,13 +28,11 @@
                   <th>Common Name</th>
                   <th>Genus</th>
                   <th>Species</th>
-                  <th></th>
                 </tr>
-                <tr ng-repeat="listing in listings | filter: query" ng-click="showDetails(listing)">
+                <tr id="listing-row" ng-repeat="listing in listings | filter: query" ng-click="showDetails(listing)">
                   <td>{{listing.COMNAME}}</td>
                   <td>{{listing.GENUS}}</td>
                   <td>{{listing.SPECIES}}</td>
-                  <!-- <td ng-click="deleteListing($index)"><span style="color: red;" class="glyphicon glyphicon-remove"></span></td> -->
                 </tr>
               </table>
             </div>
@@ -46,7 +41,6 @@
 
         <div class="col-md-6">
           <div class="card" id="addNew">
-            <!-- <img class="card-img-top" src="https://via.placeholder.com/300" width="300" height="400" alt="{{sightings[0].NAME}}"> -->
             <img class="card-img-top" src="{{curImage}}" width="300" height="400" alt="{{sightings[0].NAME}}">
             <div class="card-body" id="flower-title">
               <h5 class="card-title">{{curListing.COMNAME}}</h5>
@@ -72,16 +66,15 @@
                   </li>
               </ul>
             </form>
-            <!-- <p class="card-text">Genus: {{curListing.GENUS}}</p>
-            <p>Species: {{curListing.SPECIES}}</p> -->
           </div>
         </div>
       </div>
 
+      <hr/>
 
       <div class="row">
         <div class="col-12">
-          <h2>Sightings</h2>
+          <h2 id="sightings-title">Sightings</h2>
           <div class="card-deck">
             <div class="card border-primary mb-3" id="form">
               <div class="card-header">Add New Sighting</div>

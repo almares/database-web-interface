@@ -41,7 +41,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
     $scope.showDetails = function(listing) {
       $scope.curListing = listing;
-      // $scope.getImage(listing);
+      $scope.getImage(listing);
       $scope.getSightings(listing);
     };
 
@@ -54,7 +54,6 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     $scope.getImage = function(listing) {
       Listings.getImage(listing.COMNAME).then((res) => {
         $scope.curImage = res.data.items[0].link;
-        console.log(res.data);
       });
     };
 

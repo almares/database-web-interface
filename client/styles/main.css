@@ -1,3 +1,7 @@
+body {
+  background-color: #e3f2fd;
+}
+
 #searchBar {
   margin: 15px 10px;
 }
@@ -7,10 +11,15 @@
   max-height:700px;
 }
 
+#title {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
 #dropdown_coins {
   border-color: rgb(215,215,215);
   margin-left: 0px;
-
 }
 
 #flower-submit {
@@ -21,14 +30,22 @@
   margin-left: 0px;
 }
 
-/* #flower-title {
-  float: left;
-  margin-left: 5px;
-} */
-
 #flower-form {
   margin-left: 20px;
   margin-right: 20px;
+}
+
+#searchBar {
+  margin-left: 0px;
+}
+
+#sightings-title {
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+#listing-row {
+  cursor: pointer;
 }
 
 /* #cur-listing {
@@ -54,7 +71,7 @@
 
 
 .tableWrapper {
-  height: 645px;
+  height: 655px;
   overflow: auto;
   padding-bottom: 0px;
 }
